@@ -99,7 +99,7 @@ impl Model for Page {
             &self
                 .groups
                 .iter()
-                .map(|m| m.id.clone())
+                .map(|m| m.id())
                 .collect::<Vec<Option<oid::ObjectId>>>(),
         )?;
         Ok(doc)
