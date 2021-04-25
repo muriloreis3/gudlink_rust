@@ -1,4 +1,4 @@
-use super::{group::Group, media::Media, page::Page, subscription::Subscription};
+use super::{group::Group, page::Page};
 use crate::libs::db::{self, Model};
 use anyhow::Result;
 use async_trait::async_trait;
@@ -31,7 +31,7 @@ impl User {
             pages: vec![],
         }
     }
-    
+
     pub async fn save(&mut self) -> Result<oid::ObjectId> {
         db::save(self).await
     }
@@ -44,7 +44,7 @@ impl User {
         Ok(docs
             .into_iter()
             .map(|d| bson::from_document(d).unwrap())
-            .collect()) 
+            .collect())
     }
 
     pub async fn find_by_id(id: oid::ObjectId) -> Result<User> {

@@ -1,7 +1,17 @@
-use tokio_compat_02::FutureExt;
-use anyhow::Result;
+use std::{env, io};
+use gudlink::libs::constants;
 
-#[tokio::main]
-async fn main() -> Result<()> {
-    gudlink::run().compat().await
+fn get_address() -> String {
+    let host = env::var("HOST")
+        .ok()
+        .unwrap_or_else(||constants::HOST.to_string());
+    let port = env::var("PORT")
+        .ok()
+        .unwrap_or_else(||constants::PORT.to_string());
+    format!("{}:{}", host, port)
+}
+
+#[actix_web::main]
+async fn main() -> io::Result<()> {
+    gudlink::run(&get_address()).await
 }

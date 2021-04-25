@@ -1,5 +1,7 @@
-mod libs;
+pub mod libs;
 
+#[macro_use] extern crate actix_web;
+#[macro_use] extern crate serde_json;
 use crate::libs::model::{
     link::{Link, LinkType},
     folder::Folder,
@@ -11,6 +13,8 @@ use crate::libs::model::{
 use anyhow::Result;
 use libs::db;
 use mongodb::bson::doc;
+use actix_files as fs;
+use actix_web::{App, HttpServer};
 
 pub async fn _test_dummy_data_insertion() -> Result<()> {
     let connection = db::get_connection().await?;
@@ -51,15 +55,23 @@ pub async fn _test_dummy_data_insertion() -> Result<()> {
 }
 
 pub async fn test_find_entities() -> Result<()> {
-    let connection = db::get_connection().await?;
     println!("pages: {:#?}", Page::find(doc!{}).await?);
     println!("pages not found: {:#?}", Page::find(doc!{"teste": 2}).await?);
     println!("groups: {:#?}", Group::find(doc!{}).await?);
     println!("groups not found: {:#?}", Group::find(doc!{"teste": 2}).await?);
     Ok(())
 }
+pub fn static_files() -> fs::Files {
+    fs::Files::new("/", "./build")
+}
 
-
-pub async fn run() -> Result<()> {
-    test_find_entities().await
+pub async fn run(address: &str) -> Result<(),std::io::Error> {
+    HttpServer::new(move || {
+        App::new()
+            .configure(libs::routes::config)
+            .service(static_files())
+    })
+    .bind(address)?
+    .run()
+    .await
 }
