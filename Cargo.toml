@@ -16,3 +16,5 @@ anyhow = "1.0.40"
 serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0"
 async-recursion = "0.3.2"
+handlebars = { version = "3.0.0", features = ["dir_source"] }
+actix-http = "2"
