@@ -6,12 +6,14 @@ mod tests;
 use actix_files as fs;
 use actix_web::{web, App, HttpServer};
 use handlebars::Handlebars;
+use crate::libs::hbs_helpers::to_lower_helper;
 
 fn handlebars_config() -> web::Data<Handlebars<'static>> {
     let mut handlebars = Handlebars::new();
     handlebars
         .register_templates_directory(".hbs", "./templates")
         .unwrap();
+    handlebars.register_helper("toLower", Box::new(to_lower_helper));
     web::Data::new(handlebars)
 }
 

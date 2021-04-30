@@ -1,0 +1,24 @@
+{{#each content}}
+    {{#if this.Folder }}
+        <div class="folder-label" onclick="open_folder(this)">
+            <div class="folder">
+                <i class="far fa-folder"></i>
+                <div class="folder-info">
+                    <p class="title">{{this.Folder.title}}</p>
+                    <p class="subtitle">{{this.Folder.sub_title}}</p>
+                </div>
+            </div>
+            <div class="tab-content folder-closed">
+                {{> partials/folder_content content=this.Folder.content }}
+            </div>
+        </div>
+    {{/if}}
+    {{#if this.Link}}
+        <div class="link" onclick="open_link('{{this.Link.link}}')">
+            <i class="fas fa-link"></i>
+            <div class="link-info">
+                <p>{{this.Link.title}}</p>
+            </div>
+        </div>
+    {{/if}}
+{{/each}}

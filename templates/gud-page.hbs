@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="public/css/page-style.css">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link
+            href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+            rel="stylesheet">
+        <script src="https://kit.fontawesome.com/dc08c5b70f.js" crossorigin="anonymous"></script>
+        <link rel="icon" href="public/img/favicon.ico" type="image/x-icon">
+        <title>GudLink</title>
+    </head>
+
+    <body>
+        {{> partials/gud-header }}
+        <main>
+            {{> partials/pages pageList=this.groups }}
+        </main>
+        <footer>
+            <div class="logo">
+                <img src="public/img/gudlink_logo.svg" alt="" srcset="">
+            </div>
+        </footer>
+    </body>
+
+    <script>
+        function activate_tab(element, tabid) {
+            let active_element = document.querySelector(".tab-menu-item.active");
+            let active_tab = document.querySelector(".tab.active");
+            if (active_element) {
+                active_element.classList.remove("active");
+                if (active_tab) {
+                    active_tab.classList.remove("active");
+                }
+            }
+            document.querySelector("#" + tabid).classList.add("active");
+            element.classList.add("active");
+        }
+
+        function open_folder(element) {
+            stopPropagation();
+
+            let content = element.querySelector(".tab-content");
+            let folder_icon = element.querySelector("div>div>.fa-folder");
+
+            if (content.classList.contains("folder-closed")) {
+                folder_icon.classList.add("fa-folder-open");
+                content.classList.remove("folder-closed");
+            } else {
+                folder_icon.classList.remove("fa-folder-open");
+                content.classList.add("folder-closed");
+            }
+        }
+
+        function open_link(link) {
+            stopPropagation();
+            location.href = link;
+        }
+
+        function stopPropagation() {
+            if (!e) var e = window.event;
+            e.cancelBubble = true;
+            if (e.stopPropagation) e.stopPropagation();
+        }
+    </script>
+
+</html>

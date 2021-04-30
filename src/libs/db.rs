@@ -58,6 +58,16 @@ pub async fn find_by_id<T>(id: oid::ObjectId) -> Result<Document> where T: Model
     )?)
 }
 
+pub async fn find_one<T>(filter: Document) -> Result<Document> where T: Model {
+    Ok(bson::from_document(
+        T::collection()
+            .await?
+            .find_one(filter, None)
+            .await?
+            .expect("find error"),
+    )?)
+}
+
 pub async fn delete<T>(obj: T) -> Result<T> where T: Model{
     T::collection()
         .await?

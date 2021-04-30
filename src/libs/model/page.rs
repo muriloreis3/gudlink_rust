@@ -74,6 +74,13 @@ impl Page {
 
         Ok(bson::from_document(doc)?)
     }
+
+    pub async fn find_by_handle(handle: String) -> Result<Page> {
+        let mut doc = db::find_one::<Page>(doc!{"handle": handle}).await?;
+        *doc.get_mut("groups").unwrap() = bson::to_bson(&Group::find(doc! {}).await?)?;
+
+        Ok(bson::from_document(doc)?)
+    }
 }
 
 #[async_trait]

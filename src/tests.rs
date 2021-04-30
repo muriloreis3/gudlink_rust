@@ -10,7 +10,7 @@ use crate::libs::db;
 use mongodb::bson::doc;
 use anyhow::Result;
 
-pub async fn _test_dummy_data_insertion() -> Result<()> {
+pub async fn test_dummy_data_insertion() -> Result<()> {
     let connection = db::get_connection().await?;
 
     for db_name in connection.list_collection_names(None).await? {

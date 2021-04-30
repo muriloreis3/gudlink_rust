@@ -20,15 +20,15 @@ pub enum MediaType {
 pub struct Media {
     #[serde(rename = "_id", skip_serializing_if = "Option::is_none")]
     pub id: Option<oid::ObjectId>,
-    pub media_type: MediaType,
+    pub m_type: MediaType,
     pub link: String,
 }
 
 impl Media {
-    pub fn new(media_type: MediaType, link: String) -> Media {
+    pub fn new(m_type: MediaType, link: String) -> Media {
         Media {
             id: None,
-            media_type,
+            m_type,
             link,
         }
     }

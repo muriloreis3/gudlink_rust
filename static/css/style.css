@@ -1,0 +1,166 @@
+:root {
+  --primary-color: #fe4500;
+  --secondary-color: #e5e5e5;
+  --tertiary-color: #fff;
+  --quaternary-color: #6e9fa3;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Raleway", sans-serif;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  height: 100vh;
+  background-color: var(--secondary-color);
+}
+
+main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+button {
+  border: 0;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-weight: bold;
+  border-radius: 10px;
+}
+
+#indexHeader {
+  padding: 5px;
+  align-self: center;
+}
+
+.buttons-and-logo {
+  display: flex;
+  justify-content: space-between;
+}
+
+.page-logo,
+#indexHeader .logo {
+  background-color: #fab200;
+  width: 82px;
+  height: 82px;
+  border-radius: 50%;
+}
+
+#indexHeader .logo img {
+  width: 100%;
+  height: 100%;
+}
+
+.login-signup {
+  display: flex;
+  align-items: center;
+}
+
+.login-signup button {
+  font-size: 12px;
+  padding: 13px 23px;
+  margin: 0 10px;
+}
+
+#login {
+  color: var(--primary-color);
+  background-color: var(--secondary-color);
+}
+
+#signup {
+  background-color: var(--primary-color);
+  color: var(--tertiary-color);
+}
+
+.call-to-action {
+  display: flex;
+  justify-content: space-between;
+}
+
+.call-content {
+  max-width: 548px;
+  height: min-content;
+  margin-top: 100px;
+}
+
+.call-content fieldset {
+  border: 0;
+  display: flex;
+  flex-direction: column;
+  margin-top: 50px;
+}
+
+.call-content input {
+  border: 0;
+  padding: 10px;
+  font-size: 18px;
+  width: 420px;
+  background-color: #ececec;
+  color: var(--quaternary-color);
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.06);
+  border-radius: 10px;
+}
+
+.call-content button {
+  padding: 13px 23px;
+  max-width: 148px;
+  font-size: 12px;
+  background-color: var(--primary-color);
+  color: var(--tertiary-color);
+  margin: 15px 0;
+}
+
+.intro p {
+  font-size: 36px;
+  line-height: 42px;
+  color: var(--quaternary-color);
+}
+
+.intro p > span {
+  color: var(--primary-color);
+}
+
+.intro .sub {
+  text-decoration: underline var(--primary-color);
+}
+
+.product-info {
+  margin-top: -130px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 500px;
+  background: var(--tertiary-color);
+}
+
+.phone-wire {
+  min-width: 720px;
+}
+
+.phone-wire img {
+  width: 100%;
+  height: 100%;
+  scale: 1.1;
+}
+
+.product-marketing {
+  display: flex;
+  margin-bottom: 50px;
+  padding: 10px;
+  width: 70%;
+  align-self: center;
+}
+
+.product-marketing p {
+  width: 426px;
+  font-size: 36px;
+  font-weight: bold;
+  line-height: 42px;
+  color: var(--primary-color);
+}

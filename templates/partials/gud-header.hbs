@@ -1,0 +1,14 @@
+<header class="page-header">
+    <div class="page-logo">
+        <img src="data:image/png;base64,{{this.logo}}" alt="" srcset="">
+    </div>
+    <div class="page-info">
+        <p>{{this.title}}</p>
+        <p>@{{this.handle}}</p>
+    </div>
+    <div class="social">
+        {{#each this.medias}}
+            <div class="icon" onclick="open_link('{{this.link}}')"><i class="fab fa-{{toLower this.m_type}}"></i></div>
+        {{/each}}
+    </div>
+</header>

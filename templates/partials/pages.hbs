@@ -1,0 +1,16 @@
+<div class="tab-menu">
+    {{#each pageList}}
+        <div class="tab-menu-item {{#if @first}}active{{/if}}" onclick="activate_tab(this,'t{{@index}}')">
+            <p>{{this.title}}</p>
+        </div>
+    {{/each}}
+</div>
+<div class="tabs">
+    <div class="tabs-content">
+        {{#each pageList}}
+            <div class="tab {{#if @first}}active{{/if}} fx-col" id="t{{@index}}">
+                {{> partials/folder_content content=this.elements }}
+            </div>
+        {{/each}}
+    </div>
+</div>
